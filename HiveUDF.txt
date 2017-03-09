@@ -1,0 +1,33 @@
+package HiveUDF;
+
+import java.util.ArrayList;
+
+import org.apache.hadoop.hive.ql.exec.UDF;
+
+public class Sconcat extends UDF{
+    
+	  public String evaluate(String sep, ArrayList<String> args)
+	  {
+		  if(sep == null || args == null)
+			  return null;
+		  else if(args.size() == 0)
+			  return "";
+		  else
+		  { 
+			  String a = null;
+			  for(String itr : args)
+		      {
+		    	 if(args != null)
+		    	 {
+		    		 if(a != null)
+		    		  {
+		    			 a+=sep;
+		    		  }
+		    		 else a="";
+		    	  a+=itr;
+		    	 }
+		      }
+		      return a;
+		  }
+	  }
+}
